@@ -26,33 +26,29 @@ pip install https://github.com/vnstock-hq/vnstock_chart/releases/download/1.0.0/
 
 ## Hướng dẫn sử dụng
 
+### Dữ liệu mẫu 
+
+```python
+import pandas as pd
+from vnstock import Quote
+
+quote = Quote(symbol='VCI', source='TCBS')
+df = quote.history(start='2020-01-01', end='2024-05-25', interval='1D')
+df['time'] = pd.to_datetime(df['time'])
+df = df.sort_values('time')
+df
+```
+
 ### Biểu đồ nến (CandleChart)
 
 ```python
 from vnchart_pro import CandleChart
-import pandas as pd
-
-# Dữ liệu mẫu
-df = pd.DataFrame({
-    'time': pd.date_range(start='2023-01-01', periods=30),
-    'open': [100, 102, ...],  # Giá mở cửa
-    'high': [105, 107, ...],  # Giá cao nhất
-    'low': [98, 99, ...],     # Giá thấp nhất
-    'close': [103, 101, ...], # Giá đóng cửa
-    'volume': [1000, 1200, ...] # Khối lượng
-})
-
-# Tạo biểu đồ nến
-chart = CandleChart(
+CandleChart(
     df=df,
-    mode='candle',  # 'candle' hoặc 'bar'
-    title='Biểu đồ giá cổ phiếu ABC',
-    theme='dark',   # 'dark' hoặc 'light'
-    size_preset='medium'  # 'mini', 'small', 'medium', 'large', 'wide', 'tall'
-)
-
-# Hiển thị biểu đồ
-chart.render()
+    mode="price",
+    title="VCI Close Price + Volume",
+    size_preset='large'
+).render()
 ```
 
 ### Biểu đồ đường (LineChart)
@@ -60,18 +56,19 @@ chart.render()
 ```python
 from vnchart_pro import LineChart
 
-# Tạo biểu đồ đường
-line_chart = LineChart(
-    x=df['time'].dt.strftime('%Y-%m-%d').tolist(),
-    y=df['close'].tolist(),
-    title='Giá đóng cửa',
-    theme='light',
-    color_category='positive',  # 'positive', 'negative', 'neutral'
-    size_preset='medium'
-)
+dates = df['time'].dt.strftime('%Y-%m-%d').tolist()
+closes = df['close'].tolist()
 
-# Hiển thị biểu đồ
-line_chart.render()
+lc = LineChart(
+    x=dates,
+    y=closes,
+    title="Close Price",
+    theme="light",
+    color_category="positive",
+    size_preset='medium',
+    watermark=True
+)
+lc.render()
 ```
 
 ### Biểu đồ cột (BarChart)
@@ -79,40 +76,19 @@ line_chart.render()
 ```python
 from vnchart_pro import BarChart
 
-# Tạo biểu đồ cột
-bar_chart = BarChart(
-    x=df['time'].dt.strftime('%Y-%m-%d').tolist()[-10:],
-    y=df['volume'].tolist()[-10:],
-    title='Khối lượng giao dịch',
-    theme='dark',
-    color_category='neutral',
+dates  = df['time'].dt.strftime('%Y-%m-%d').tolist()
+vols   = df['volume'].tolist()
+
+bc = BarChart(
+    x=dates,
+    y=vols,
+    title="VCI Daily Volume",
+    theme="light",
+    color_category="neutral",
+    watermark=True,
     size_preset='medium'
 )
-
-# Hiển thị biểu đồ
-bar_chart.render()
-```
-
-### Dashboard
-
-```python
-from vnchart_pro import Dashboard, LineChart, BarChart, CandleChart
-
-# Tạo các biểu đồ riêng lẻ
-candle_chart = CandleChart(df=df, mode='candle', title='Biểu đồ nến')
-line_chart = LineChart(x=dates, y=closes, title='Giá đóng cửa')
-bar_chart = BarChart(x=dates[-10:], y=volumes[-10:], title='Khối lượng giao dịch')
-
-# Tạo dashboard với 3 biểu đồ
-dashboard = Dashboard(
-    charts=[candle_chart, line_chart, bar_chart],
-    title='Phân tích thị trường',
-    description='Tổng quan về diễn biến giá và khối lượng',
-    theme='dark'
-)
-
-# Hiển thị dashboard với bố cục 3 panel
-dashboard.layout3()
+bc.render()
 ```
 
 ## Các loại biểu đồ hỗ trợ
