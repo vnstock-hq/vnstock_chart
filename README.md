@@ -21,7 +21,7 @@ VnChartPro là thư viện trực quan hóa dữ liệu tài chính chuyên nghi
 ## Cài đặt
 
 ```bash
-pip install https://github.com/vnstock-hq/vnstock_chart/releases/download/vnstock_chart-1.0.0/vnstock_chart-1.0.0.tar.gz
+pip install https://github.com/vnstock-hq/vnstock_chart/releases/download/1.0.0/vnstock_chart-1.0.0.tar.gz
 ```
 
 ## Hướng dẫn sử dụng
