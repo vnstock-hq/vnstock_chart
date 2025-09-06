@@ -1,4 +1,4 @@
-# VnChartPro
+# Vnstock Chart
 
 <div align="center">
   <img src="https://vnstocks.com/_next/image?url=%2Fimg%2Fvnstock_logo_trans_rec_hoz.png&w=256&q=75" alt="VnChartPro Logo" width="300">
@@ -21,7 +21,7 @@ VnChartPro là thư viện trực quan hóa dữ liệu tài chính chuyên nghi
 ## Cài đặt
 
 ```bash
-pip install https://github.com/vnstock-hq/vnchart_pro/releases/download/vnchart_pro-1.0.0/vnchart_pro-1.0.0.tar.gz
+pip install https://github.com/vnstock-hq/vnstock_chart/releases/download/vnstock_chart-1.0.0/vnstock_chart-1.0.0.tar.gz
 ```
 
 ## Hướng dẫn sử dụng
