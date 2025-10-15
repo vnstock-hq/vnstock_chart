@@ -29,7 +29,8 @@ homepage = "https://github.com/vnstock-hq/vnstock_chart"
 repository = "https://github.com/vnstock-hq/vnstock_chart"
 
 [tool.setuptools]
-packages = { find = {} }
+packages = ["vnstock_chart", "vnstock_chart.charts", "vnstock_chart.core", 
+            "vnstock_chart.themes", "vnstock_chart.utils", "vnstock_chart.gallery"]
 
 [tool.setuptools.package-data]
 vnstock_chart = ["gallery/*", "charts/*", "core/*", "themes/*", "utils/*", "gallery/report/templates/*"]
