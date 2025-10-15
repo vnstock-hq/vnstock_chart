@@ -1,0 +1,39 @@
+[project]
+name = "vnstock_chart"
+version = "1.0.0"
+description = "Professional financial charting library for Python. Supports backtesting, performance analytics, dashboards, and TradingView/Bloomberg-style visualizations."
+authors = [
+    { name = "vnstock-hq", email = "support@vnstocks.com" }
+]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Topic :: Software Development :: User Interfaces",
+    "Natural Language :: English",
+    "Development Status :: 4 - Beta"
+]
+[project.urls]
+homepage = "https://github.com/vnstock-hq/vnstock_chart"
+repository = "https://github.com/vnstock-hq/vnchart_pro_release"
+
+[tool.setuptools]
+packages = { find = {} }
+
+[tool.setuptools.package-data]
+vnstock_chart = ["gallery/*", "charts/*", "core/*", "themes/*", "utils/*", "gallery/report/templates/*"]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
