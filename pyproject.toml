@@ -26,7 +26,7 @@ classifiers = [
 ]
 [project.urls]
 homepage = "https://github.com/vnstock-hq/vnstock_chart"
-repository = "https://github.com/vnstock-hq/vnchart_pro_release"
+repository = "https://github.com/vnstock-hq/vnstock_chart"
 
 [tool.setuptools]
 packages = { find = {} }
